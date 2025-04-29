@@ -3,15 +3,14 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    StarterAssetsInputs starterAssetsInputs;
-
-    const string SHOOT_STRING = "Shoot";
-
-    EnemyHealth enemyHealth;
-
+    [SerializeField] GameObject hitVFXPrefab;
     [SerializeField] Animator animator;
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] int damage = 1;
+
+    StarterAssetsInputs starterAssetsInputs;
+
+    const string SHOOT_STRING = "Shoot";
     
     void Awake()
     {
@@ -37,6 +36,8 @@ public class Weapon : MonoBehaviour
         {   
             EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
             enemyHealth?.TakeDamage(damage);
+
+            Instantiate(hitVFXPrefab, hit.point, Quaternion.identity);
         }
     }
 }
