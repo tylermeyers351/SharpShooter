@@ -5,7 +5,6 @@ public class ActiveWeapon : MonoBehaviour
 {
     [SerializeField] WeaponSO weaponSO;
     
-    
     Animator animator;
     StarterAssetsInputs starterAssetsInputs;
     Weapon currentWeapon;
@@ -31,7 +30,22 @@ public class ActiveWeapon : MonoBehaviour
     void Update()
     {
         currentTime += Time.deltaTime;
+        cooldownTimer = weaponSO.FireRate;
+        
         HandleShoot();
+        HandleZoom();
+    }
+
+    public void SwitchWeapon(WeaponSO weaponSO)
+    {
+        if (currentWeapon)
+        {
+            Destroy(currentWeapon.gameObject);
+        }
+
+        Weapon newWeapon = Instantiate(weaponSO.weaponPrefab, transform).GetComponent<Weapon>();
+        currentWeapon = newWeapon;
+        this.weaponSO = weaponSO;
     }
 
     void HandleShoot()
@@ -48,6 +62,20 @@ public class ActiveWeapon : MonoBehaviour
         {
             starterAssetsInputs.ShootInput(false);
         }
-        
     }
+
+    void HandleZoom()
+    {
+        if (!weaponSO.CanZoom) return;
+
+        if (starterAssetsInputs.zoom)
+        {
+            Debug.Log("Zooming in");
+        }
+        else
+        {
+            Debug.Log("Not zooming in");
+        }
+    }
+
 }
