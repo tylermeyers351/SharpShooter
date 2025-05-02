@@ -43,7 +43,11 @@ public class ActiveWeapon : MonoBehaviour
         currentWeapon.Shoot(weaponSO);
         animator.Play(SHOOT_STRING, 0, 0f);
         currentTime = 0;
+
+        if(!weaponSO.IsAutomatic)
+        {
+            starterAssetsInputs.ShootInput(false);
+        }
         
-        starterAssetsInputs.ShootInput(false);
     }
 }
