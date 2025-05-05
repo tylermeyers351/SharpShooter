@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 644177608270443184}
   serializedVersion: 2
   m_LocalRotation: {x: -0.036635354, y: -0.693688, z: -0.030362073, w: 0.7187023}
-  m_LocalPosition: {x: -0.691, y: 0.069, z: 0.006}
+  m_LocalPosition: {x: -0.692, y: 0.087, z: 0.001}
   m_LocalScale: {x: 0.050000004, y: 0.050000004, z: 0.050000004}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -4881,6 +4881,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   muzzleFlash: {fileID: 80055007426183631}
+  interactionLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &5631270066387518277
 GameObject:
   m_ObjectHideFlags: 0

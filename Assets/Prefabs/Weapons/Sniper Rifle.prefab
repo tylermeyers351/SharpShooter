@@ -79,6 +79,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   muzzleFlash: {fileID: 7640890230384698082}
+  interactionLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1001 &276530019884115985
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -247,15 +250,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5828083098212918841, guid: ce490c67b930736408ce63fef43d908b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.20600006
+      value: -0.822
       objectReference: {fileID: 0}
     - target: {fileID: 5828083098212918841, guid: ce490c67b930736408ce63fef43d908b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.08699996
+      value: 0.079
       objectReference: {fileID: 0}
     - target: {fileID: 5828083098212918841, guid: ce490c67b930736408ce63fef43d908b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.0060000373
+      value: 0.002
       objectReference: {fileID: 0}
     - target: {fileID: 5828083098212918841, guid: ce490c67b930736408ce63fef43d908b, type: 3}
       propertyPath: m_LocalRotation.w
