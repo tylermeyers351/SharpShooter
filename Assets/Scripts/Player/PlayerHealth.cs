@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] int startingHealth = 3;
+    [SerializeField] int startingHealth = 5;
+    
     int currentHealth;
 
     void Awake()
@@ -16,7 +17,7 @@ public class EnemyHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+           Destroy(this.gameObject);
         }
     }
 }
