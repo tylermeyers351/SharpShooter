@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
     [SerializeField] float radius = 1.5f;
+    [SerializeField] int damageExplosion = 3;
 
     void Start()
     {
@@ -17,6 +19,18 @@ public class Explosion : MonoBehaviour
 
     void Explode()
     {
-        //do damage to player
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
+
+        foreach (var collider in hitColliders)
+        {
+            
+            PlayerHealth playerHealth = collider.GetComponent<PlayerHealth>();
+            
+            if (!playerHealth) continue;
+
+            playerHealth.TakeDamage(damageExplosion);
+
+            break;
+        }
     }
 }

@@ -1,23 +1,61 @@
+using Cinemachine;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] int startingHealth = 5;
-    
-    int currentHealth;
+    [Range(1,10)]
+    [SerializeField] int startingHealth = 10;
+    [SerializeField] int currentHealth;
+    [SerializeField] CinemachineVirtualCamera deathVirtualCamera;
+    [SerializeField] Transform weaponCamera;
+    [SerializeField] GameObject overlayCanvas;
+    [SerializeField] Image[] shieldBars;
+
+    int gameOverVirtualCameraPriority = 20;
+    // int shieldBarsCount;
 
     void Awake()
     {
         currentHealth = startingHealth;
+        AdjustShieldUI();
+        // shieldBarsCount = shieldBars.Length - 1;
     }
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        AdjustShieldUI();
 
         if (currentHealth <= 0)
         {
-           Destroy(this.gameObject);
+            weaponCamera.parent = null;
+            deathVirtualCamera.Priority = gameOverVirtualCameraPriority;
+            Destroy(this.gameObject);
+            overlayCanvas.SetActive(false);
         }
+    }
+
+    void AdjustShieldUI()
+    {
+        for (int i = 0; i < shieldBars.Length; i++)
+        {
+            if (i < currentHealth)
+            {
+                shieldBars[i].gameObject.SetActive(true);
+            }
+            else
+            {
+                shieldBars[i].gameObject.SetActive(false);
+            }
+        }
+        // int count = 0;
+        // for (int i = shieldBarsCount; i >= 0 && count < damage; i--)
+        // {
+        //     Debug.Log("Iteration: " + shieldBars[i]); 
+        //     shieldBars[i].gameObject.SetActive(false);
+        //     count++;
+        //     shieldBarsCount--;
+        // }
     }
 }
