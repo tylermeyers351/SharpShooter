@@ -11,6 +11,9 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] Transform weaponCamera;
     [SerializeField] GameObject overlayCanvas;
     [SerializeField] Image[] shieldBars;
+    [SerializeField] GameObject gameOverContainer;
+    [SerializeField] GameObject ammoContainer;
+    [SerializeField] GameObject shieldContainer;
 
     int gameOverVirtualCameraPriority = 20;
     // int shieldBarsCount;
@@ -32,7 +35,9 @@ public class PlayerHealth : MonoBehaviour
             weaponCamera.parent = null;
             deathVirtualCamera.Priority = gameOverVirtualCameraPriority;
             Destroy(this.gameObject);
-            overlayCanvas.SetActive(false);
+            gameOverContainer.SetActive(true);
+            ammoContainer.SetActive(false);
+            shieldContainer.SetActive(false);
         }
     }
 
